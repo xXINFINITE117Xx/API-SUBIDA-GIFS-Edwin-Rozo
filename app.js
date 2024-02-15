@@ -46,3 +46,21 @@ function mustunce(func, delay) {
     }, delay);
   };
 }
+
+const userGifInput = document.getElementById('user-gif-input');
+const addUserGifButton = document.getElementById('add-user-gif-button');
+
+addUserGifButton.addEventListener('click', addGifUser);
+
+function addGifUser() {
+    const gifUrl = userGifInput.value.trim();
+
+    if (gifUrl !== '') {
+        const img = document.createElement('img');
+        img.src = gifUrl;
+        img.classList.add('gif');
+        gifContainer.appendChild(img);
+
+        userGifInput.value = '';
+    }
+}
