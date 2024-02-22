@@ -46,3 +46,17 @@ function mustunce(func, delay) {
     }, delay);
   };
 }
+async function showRandomGifs() {
+  try {
+    const endpoint = `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=10`;
+    const response = await fetch(endpoint);
+    const data = await response.json();
+
+    showGifs(data.data);
+  } catch (error) {
+    console.error("Error to fetch random gifs:", error);
+  }
+}
+
+
+window.addEventListener("load", showRandomGifs);
